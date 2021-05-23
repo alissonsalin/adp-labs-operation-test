@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <script>
+            let intervalID = window.setInterval('reload(true)', 5000);
+            console.log(intervalID);
+            sessionStorage.setItem('intervalID', intervalID);
+            
+            function reload(action) {
+                if(action) {
+                    window.location.reload();
+                    console.log('REFRESH RUNNING');
+                    document.getElementById("status").innerText = "RUNNING...";
+                } else {
+                    window.clearInterval(sessionStorage.getItem('intervalID'));
+                    console.log('REFRESH STOPPED');
+                    document.getElementById("status").innerText = "STOPPED";
+                }
+            }
+        </script>
+    </head>
+    
+    <body>
+        <br/>
+        <br/>
+        <input type="button" value="STOP" onclick="reload(false)"/>
+        <input type="button" value="START" onclick="reload(true)"/>
+        <br/>
+        <br/>
+        <span id="status">RUNNING...</span>
+    </body>
+</html>
