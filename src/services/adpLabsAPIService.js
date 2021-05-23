@@ -1,24 +1,13 @@
 const https = require('https');
+const validationManager = require('./ValidationManager');
 const ErrorManager = require('./ErrorManager');
+require('dotenv').config();
+
+const errorManager = new ErrorManager();
 
 /**
- * If the status code is lower than 220 (SUCCESS) or greater then 299 (Last code Unassigned)
- * then return an error
- * @param {Response} the response result
- * @return {Error} common errors - 400, 404, 503 
- */
-function validateRequest(res) {
-  if (res.statusCode < process.env.STATUS_CODE_SUCCESS 
-    || res.statusCode >= process.env.STATUS_CODE_BEGIN_ERRORS) {
-    const errorMessage = new ErrorManager().error(res.statusCode);
-    return errorMessage;
-  }
-  return null;
-}
-
-/**
- * do generic POST 
- * @param {String} url to post 
+ * do generic POST
+ * @param {String} url to post
  * @param {JSON} data is the operation
  * @return {Promise} task result from ADP Labs
  */
@@ -35,7 +24,7 @@ async function post(url, data) {
   };
   return new Promise((resolve, reject) => {
     const req = https.request(url, options, (res) => {
-      const requestErrorsResult = validateRequest(res);
+      const requestErrorsResult = validationManager.validatePOSTRequest(res);
       if (requestErrorsResult === null) {
         const body = [];
         res.on('data', (chunk) => body.push(chunk));
@@ -55,7 +44,7 @@ async function post(url, data) {
 
     req.on('timeout', () => {
       req.destroy();
-      reject(new Error('Request time out'));
+      reject(errorManager.error(process.env.STATUS_CODE_REQUEST_TIMEOUT));
     });
 
     req.write(dataString);
@@ -65,7 +54,7 @@ async function post(url, data) {
 
 /**
  * Do generic GET
- * @param {String} url to post 
+ * @param {String} url to post
  * @return {Promise} task operation from ADP LABS
  */
 async function get(url) {
@@ -75,11 +64,11 @@ async function get(url) {
   };
   return new Promise((resolve, reject) => {
     const req = https.request(url, options, (res) => {
-      if (res.statusCode < process.env.STATUS_CODE_SUCCESS 
-        || res.statusCode >= process.env.STATUS_CODE_BEGIN_ERRORS) {
-        return reject(new Error(`HTTP status code ${res.statusCode}`));
-      }
+      const resultValidatGETRequest = validationManager.validateGETRequest(res);
 
+      if (resultValidatGETRequest != null) {
+        return reject(resultValidatGETRequest);
+      }
       const body = [];
       res.on('data', (chunk) => body.push(chunk));
       res.on('end', () => {
@@ -95,7 +84,7 @@ async function get(url) {
 
     req.on('timeout', () => {
       req.destroy();
-      reject(new Error('Request time out'));
+      reject(new Error(process.env.MESSAGE_REQUEST_TIME_OUT));
     });
 
     req.end();

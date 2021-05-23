@@ -15,6 +15,8 @@ server.on('request', async (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.writeHead(process.env.STATUS_CODE_SUCCESS, { 'Content-Type': 'text/html' });
   res.write(data);
+  // better stream then file read
+  // its not a good idea load all the file to memory
   fs.createReadStream('./src/pages/operation.html').pipe(res);
 });
 

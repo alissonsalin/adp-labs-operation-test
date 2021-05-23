@@ -3,6 +3,7 @@ const IdNotFoundError = require('../errors/IdNotFoundError');
 const DataBaseComunicationError = require('../errors/DataBaseComunicationError');
 const IncorrectResultError = require('../errors/IncorrectResultError');
 const TaskOperationError = require('../errors/TaskOperationError');
+const RequestTimeOutError = require('../errors/RequestTimeOutError');
 
 class ErrorManager {
   constructor() {
@@ -31,6 +32,7 @@ class ErrorManager {
     this.addError(new DataBaseComunicationError());
     this.addError(new IncorrectResultError());
     this.addError(new TaskOperationError());
+    this.addError(new RequestTimeOutError());
   }
 }
 

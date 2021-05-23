@@ -9,7 +9,7 @@
     "scheduler": "node src/appScheduler.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Alisson Salin",
   "license": "ISC",
   "devDependencies": {
     "eslint": "^7.27.0",

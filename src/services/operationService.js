@@ -2,16 +2,19 @@ const adpLabsApiService = require('./adpLabsAPIService');
 const OperationManager = require('./OperationManager');
 const Operation = require('../models/Operation');
 const OperationTaks = require('./operations/OperationTask');
+require('dotenv').config();
+
+const operationTasks = new OperationTaks();
+const operationManager = new OperationManager();
 
 function validateOperation(operation) {
-  new OperationTaks().validateOperation(operation);
+  operationTasks.validateOperation(operation);
 }
 
 function calculate(data) {
   const operationJSON = JSON.parse(data);
   validateOperation(operationJSON);
   const operation = new Operation(operationJSON);
-  const operationManager = new OperationManager();
   const operationResult = operationManager.calculate(operation);
   const calculateResult = {
     operation,

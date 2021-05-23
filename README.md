@@ -34,6 +34,18 @@ The first one create a server on port 8080. Just open it in your browser: http:/
 
 The second one run a scheduler configured to run every 5 seconds. The result will be showed in the terminal.
 
+## READ THE CODE
+
+All begins on app.js or appScheduler.js. The main files to read in he follow order are:
+
+1. /src/services/operationServices.js
+2. /src/services/adpLabsAPIService.js
+3. /src/services/operations/*.js
+4. /src/services/*Manager.js
+5. /src/errors/*.js
+6. /src/pages/operation.html
+7. /src/test/*.js
+
 ## IMPROVEMENTS
 
 - If there was more sequence calls to promise functinos its recomended use a reduce and call functinos sequentially
