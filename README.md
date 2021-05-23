@@ -12,7 +12,7 @@ Just clone de repository and run **npm install**
   - models: representation for some objects like *Operation*
   - errors: handlers to message errors
   - test: all unit tests and data generatos
-  - .env: was used to parametrize values
+  - .env: was used to parameterize values
 - The project is using Airbnb style
 - All files that are classes start with the first letter in upper case.
 - All files thar contains functions starts with the first letter in lower case.
@@ -48,9 +48,10 @@ All begins on app.js or appScheduler.js. The main files to read in he follow ord
 
 ## IMPROVEMENTS
 
-- If there was more sequence calls to promise functinos its recomended use a reduce and call functinos sequentially
+- If there was more sequence calls to promise functinos its recomended use a reduce and call functionss sequentially
 - Do more unit tests
 - Improve visual style of html page
+- Format the result
 - Create actions to end user such as:
   - view history of operations tasks
   - show executions reports
@@ -58,9 +59,11 @@ All begins on app.js or appScheduler.js. The main files to read in he follow ord
 
 ## BUGS
 
-### WORKER 
+### WORKER
 
-Still search for bugs. Nobody is infallible:smiley:
+All founded bugs are resolved till now
+Still search for more...
+Nobody is infallible:smiley:
 
 BUG | DATE | STATUS
 --------|--------|--------
