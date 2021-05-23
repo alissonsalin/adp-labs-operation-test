@@ -2,7 +2,7 @@
 
 ## INSTALLATION
 
-Just clone de repository em run **npm install**
+Just clone de repository and run **npm install**
 
 ## DEFINITION
 
