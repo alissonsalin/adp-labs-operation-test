@@ -36,4 +36,4 @@ class OperationManager {
   }
 }
 
-module.exports = OperationManager;
+module.exports = new OperationManager();

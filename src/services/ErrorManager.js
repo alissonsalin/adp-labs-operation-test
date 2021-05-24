@@ -5,6 +5,9 @@ const IncorrectResultError = require('../errors/IncorrectResultError');
 const TaskOperationError = require('../errors/TaskOperationError');
 const RequestTimeOutError = require('../errors/RequestTimeOutError');
 
+require('dotenv').config();
+
+
 class ErrorManager {
   constructor() {
     this.errors = [];
@@ -36,4 +39,4 @@ class ErrorManager {
   }
 }
 
-module.exports = ErrorManager;
+module.exports = new ErrorManager();

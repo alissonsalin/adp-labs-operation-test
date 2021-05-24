@@ -1,9 +1,7 @@
 const https = require('https');
 const validationManager = require('./ValidationManager');
-const ErrorManager = require('./ErrorManager');
+const errorManager = require('./ErrorManager');
 require('dotenv').config();
-
-const errorManager = new ErrorManager();
 
 /**
  * do generic POST

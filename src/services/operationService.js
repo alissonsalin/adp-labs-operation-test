@@ -1,14 +1,12 @@
 const adpLabsApiService = require('./adpLabsAPIService');
-const OperationManager = require('./OperationManager');
+const operationManager = require('./OperationManager');
 const Operation = require('../models/Operation');
-const OperationTaks = require('./operations/OperationTask');
+const validationManager = require('./validationManager');
+
 require('dotenv').config();
 
-const operationTasks = new OperationTaks();
-const operationManager = new OperationManager();
-
 function validateOperation(operation) {
-  operationTasks.validateOperation(operation);
+  validationManager.validateOperation(operation);
 }
 
 function calculate(data) {
@@ -44,8 +42,7 @@ function doOperation() {
   const postURL = process.env.ADPLABS_SEND_OPERATION_RESULT_URL;
 
   return new Promise((resolve, reject) => {
-    const resultOperation = adpLabsApiService.get(getURL);
-    resultOperation
+    adpLabsApiService.get(getURL)
       .then((operation) => {
         const calculateResult = calculate(operation);
         adpLabsApiService.post(postURL, calculateResult.response)
