@@ -31,13 +31,14 @@ There are two way to run the project:
 1. **npm start**
 2. **npm run scheduler**
 
-The first one create a server on port 8080. Just open it in your browser: http://localhost:8080
+The first one create a server on port 8080. Just open it in your browser: <http://localhost:8080>
 
 The second one run a scheduler configured to run every 5 seconds. The result will be showed in the terminal.
 
 ## TEST
 
 Just run **npm test**
+
 ## READ THE CODE
 
 All begins on app.js or appScheduler.js. The main files to read in he follow order are:
@@ -101,4 +102,4 @@ N/A | N/A | N/A
 
 BUG | DATE | STATUS
 --------|--------|--------
-https://interview.adpeai.com/api/v1/get-task <br/>was returning HTTP code 503 | 2021-05-21 | SOLVED
+<https://interview.adpeai.com/api/v1/get-task> <br/> was returning HTTP code 503 | 2021-05-21 | SOLVED
