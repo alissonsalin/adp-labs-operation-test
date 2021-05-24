@@ -50,6 +50,25 @@ All begins on app.js or appScheduler.js. The main files to read in he follow ord
 6. /src/pages/operation.html
 7. /src/test/*.js
 
+### THE RESULT JSON
+
+```json
+{
+   "task":{
+      "id":"150ad19f-8514-45da-9ad6-2e085f9abb05",
+      "operation":"addition",
+      "left":7739769200594633,
+      "right":7380877936090333
+   },
+   "calculateResult":15120647136684966,
+   "submitResult":"Correct"
+}
+```
+
+> task: task operation
+> calculateResult: result of the arithmetic operation
+> submitResult: ADP Labs result calculate operation by id
+
 ## IMPROVEMENTS
 
 - If there was more sequence calls to promise functinos its recomended use a reduce and call functionss sequentially
@@ -83,4 +102,3 @@ N/A | N/A | N/A
 BUG | DATE | STATUS
 --------|--------|--------
 https://interview.adpeai.com/api/v1/get-task <br/>was returning HTTP code 503 | 2021-05-21 | SOLVED
-
