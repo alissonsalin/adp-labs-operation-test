@@ -1,5 +1,5 @@
 const https = require('https');
-const validationManager = require('./ValidationManager');
+const validationManager = require('./validationManager');
 const errorManager = require('./ErrorManager');
 require('dotenv').config();
 
@@ -82,7 +82,7 @@ async function get(url) {
 
     req.on('timeout', () => {
       req.destroy();
-      reject(new Error(process.env.MESSAGE_REQUEST_TIME_OUT));
+      reject(errorManager.error(process.env.STATUS_CODE_REQUEST_TIMEOUT));
     });
 
     req.end();

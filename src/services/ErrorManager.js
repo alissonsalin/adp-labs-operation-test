@@ -30,6 +30,19 @@ class ErrorManager {
     }
   }
 
+  buildReturnMessage(calculateResult, adpLabsResult) {
+    const returnMessage = {
+      task: calculateResult.operation,
+      calculateResult: calculateResult.response.result,
+      submitResult: adpLabsResult,
+    };
+    return JSON.stringify(returnMessage);
+  }
+
+  buildReturnErrorMessage(calculateResult, error) {
+    return new Error(this.buildReturnMessage(calculateResult, error));
+  }
+
   init() {
     this.addError(new IdNotFoundError());
     this.addError(new DataBaseComunicationError());

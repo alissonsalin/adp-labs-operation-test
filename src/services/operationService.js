@@ -2,8 +2,12 @@ const adpLabsApiService = require('./adpLabsAPIService');
 const operationManager = require('./OperationManager');
 const Operation = require('../models/Operation');
 const validationManager = require('./validationManager');
+const errorManager = require('./ErrorManager');
 
 require('dotenv').config();
+
+const getURL = process.env.ADPLABS_TAKS_OPERATION_URL;
+const postURL = process.env.ADPLABS_SEND_OPERATION_RESULT_URL;
 
 function validateOperation(operation) {
   validationManager.validateOperation(operation);
@@ -11,6 +15,7 @@ function validateOperation(operation) {
 
 function calculate(data) {
   const operationJSON = JSON.parse(data);
+
   validateOperation(operationJSON);
   const operation = new Operation(operationJSON);
   const operationResult = operationManager.calculate(operation);
@@ -34,20 +39,10 @@ function buildReturnMessage(calculateResult, adpLabsResult) {
 }
 
 function buildReturnErrorMessage(calculateResult, error) {
-  return new Error(buildReturnMessage(calculateResult, error));
-}
-
-function buildReturnErrorNotCalculateMessage(operation, error) {
-  const calculateResult = {
-    operation,
-  };
-  return new Error(buildReturnMessage(calculateResult, error));
+  return errorManager.buildReturnErrorMessage(calculateResult, error);
 }
 
 function doOperation() {
-  const getURL = process.env.ADPLABS_TAKS_OPERATION_URL;
-  const postURL = process.env.ADPLABS_SEND_OPERATION_RESULT_URL;
-
   return new Promise((resolve, reject) => {
     adpLabsApiService.get(getURL)
       .then((operation) => {
@@ -56,7 +51,7 @@ function doOperation() {
           .then((adpLabsResult) => resolve(buildReturnMessage(calculateResult, adpLabsResult)))
           .catch((error) => reject(buildReturnErrorMessage(calculateResult, error.message)));
       })
-      .catch((error) => reject(buildReturnErrorNotCalculateMessage, error.message));
+      .catch((error) => reject(error));
   });
 }
 
