@@ -65,9 +65,9 @@ All begins on app.js or appScheduler.js. The main files to read in he follow ord
 }
 ```
 
-> task: task operation
-> calculateResult: result of the arithmetic operation
-> submitResult: ADP Labs result calculate operation by id
+- task: task operation
+- calculateResult: result of the arithmetic operation
+- submitResult: ADP Labs result calculate operation by id
 
 ## IMPROVEMENTS
 
