@@ -18,7 +18,7 @@ describe('DIVISION TEST', () => {
     divisionOperation = new DivisionOperation();
     taskOperation = {
       id: '1',
-      operation: 'Division',
+      operation: 'division',
       left: 0,
       right: 0,
     };

@@ -4,6 +4,7 @@ const DataBaseComunicationError = require('../errors/DataBaseComunicationError')
 const IncorrectResultError = require('../errors/IncorrectResultError');
 const TaskOperationError = require('../errors/TaskOperationError');
 const RequestTimeOutError = require('../errors/RequestTimeOutError');
+const DivisionByZeroError = require('../errors/DivisionByZeroError');
 
 require('dotenv').config();
 
@@ -35,6 +36,7 @@ class ErrorManager {
     this.addError(new IncorrectResultError());
     this.addError(new TaskOperationError());
     this.addError(new RequestTimeOutError());
+    this.addError(new DivisionByZeroError());
   }
 }
 

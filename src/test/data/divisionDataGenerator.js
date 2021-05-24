@@ -51,6 +51,10 @@ function createThrowingTestData() {
   const test6 = {
     testDescription: 'throwing when both operators are null', left: null, right: null, result: Error,
   };
+  const test7 = {
+    testDescription: 'throwing when divided by zero', left: 2, right: 0, result: Error,
+  };
+
 
   data.push(test1);
   data.push(test2);
@@ -58,6 +62,7 @@ function createThrowingTestData() {
   data.push(test4);
   data.push(test5);
   data.push(test6);
+  data.push(test7);
 
   return data;
 }

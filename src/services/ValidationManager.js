@@ -20,12 +20,23 @@ function validateSchemaOperation(operation) {
  * @returns {Error} - if the operation was invalid throw Error else null
  */
 function validateOperation(operation) {
+  if (operation.operation === 'division') {
+    this.validateDivisionByZero(operation);
+  }
   const validationOperationResult = validateSchemaOperation(operation);
   if (validationOperationResult != null && validationOperationResult.length > 0) {
     const error = errorManager.error(parseInt(process.env.STATUS_CODE_VALIDATION_ERROR, 10));
     error.message = error.message.concat(' ')
     + validationOperationResult[0].dataPath.concat(' ')
     + validationOperationResult[0].message.concat(' ');
+    throw error;
+  }
+  return null;
+}
+
+function validateDivisionByZero(operation) {
+  if (operation.right === 0) {
+    const error = errorManager.error(parseInt(process.env.STATUS_CODE_DIVISION_BY_ZERO_ERROR, 10));
     throw error;
   }
   return null;
@@ -64,4 +75,5 @@ module.exports = {
   validateOperation,
   validatePOSTRequest,
   validateGETRequest,
+  validateDivisionByZero,
 };
