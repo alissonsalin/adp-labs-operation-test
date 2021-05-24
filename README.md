@@ -63,7 +63,9 @@ All begins on app.js or appScheduler.js. The main files to read in he follow ord
 ### WORKER
 
 All founded bugs are resolved till now
+
 Still search for more...
+
 Nobody is infallible:smiley:
 
 BUG | DATE | STATUS
