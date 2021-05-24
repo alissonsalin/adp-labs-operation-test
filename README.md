@@ -8,6 +8,7 @@ Just clone de repository and run **npm install**
 
 - All code are inside src folder. The structure is:
   - services: bussiness layer
+  - config: some project configs like JSON schema
   - pages: html files
   - models: representation for some objects like *Operation*
   - errors: handlers to message errors

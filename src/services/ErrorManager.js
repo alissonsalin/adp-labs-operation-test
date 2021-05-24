@@ -7,7 +7,6 @@ const RequestTimeOutError = require('../errors/RequestTimeOutError');
 
 require('dotenv').config();
 
-
 class ErrorManager {
   constructor() {
     this.errors = [];
