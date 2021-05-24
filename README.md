@@ -51,6 +51,8 @@ All begins on app.js or appScheduler.js. The main files to read in he follow ord
 
 - If there was more sequence calls to promise functinos its recomended use a reduce and call functionss sequentially
 - Do more unit tests
+  - increase code coverage
+  - more test cenarios
 - Improve visual style of html page
 - Format the result
 - Create actions to end user such as:
