@@ -26,7 +26,7 @@ Just clone de repository and run **npm install**
 
 ## RUNNING
 
-There are two way to run the test:
+There are two way to run the project:
 
 1. **npm start**
 2. **npm run scheduler**
@@ -35,6 +35,9 @@ The first one create a server on port 8080. Just open it in your browser: http:/
 
 The second one run a scheduler configured to run every 5 seconds. The result will be showed in the terminal.
 
+## TEST
+
+Just run **npm test**
 ## READ THE CODE
 
 All begins on app.js or appScheduler.js. The main files to read in he follow order are:
