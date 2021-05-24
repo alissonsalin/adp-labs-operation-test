@@ -15,7 +15,6 @@ function validateOperation(operation) {
 
 function calculate(data) {
   const operationJSON = JSON.parse(data);
-
   validateOperation(operationJSON);
   const operation = new Operation(operationJSON);
   const operationResult = operationManager.calculate(operation);
